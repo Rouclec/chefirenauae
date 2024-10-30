@@ -1,22 +1,29 @@
-import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+
+console.log("resend api key: ", process.env.RESEND_API_KEY);
+console.log("email to: ", process.env.EMAIL_TO);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const formType = formData.get('formType') as string;
+  const formType = formData.get("formType") as string;
 
   let emailSubject: string;
   let emailBody: string;
   let attachments: { filename: string; content: Buffer }[] = [];
 
-  if (formType === 'contact') {
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const subject = formData.get('subject') as string;
-    const telephone = formData.get('telephone') as string;
-    const message = formData.get('message') as string;
+  if (formType === "contact") {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const telephone = formData.get("telephone") as string;
+    const message = formData.get("message") as string;
 
     emailSubject = `New Contact Form Submission: ${subject}`;
     emailBody = `
@@ -26,14 +33,14 @@ export async function POST(request: Request) {
       Telephone: ${telephone}
       Message: ${message}
     `;
-  } else if (formType === 'career') {
-    const firstName = formData.get('firstName') as string;
-    const lastName = formData.get('lastName') as string;
-    const email = formData.get('email') as string;
-    const telephone = formData.get('telephone') as string;
-    const position = formData.get('position') as string;
-    const message = formData.get('message') as string;
-    const cvFile = formData.get('uploadCv') as File;
+  } else if (formType === "career") {
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const email = formData.get("email") as string;
+    const telephone = formData.get("telephone") as string;
+    const position = formData.get("position") as string;
+    const message = formData.get("message") as string;
+    const cvFile = formData.get("uploadCv") as File;
 
     emailSubject = `New Career Application: ${position}`;
     emailBody = `
@@ -50,25 +57,28 @@ export async function POST(request: Request) {
       const cvBuffer = await cvFile.arrayBuffer();
       attachments.push({
         filename: cvFile.name,
-        content: Buffer.from(cvBuffer)
+        content: Buffer.from(cvBuffer),
       });
     }
   } else {
-    return NextResponse.json({ error: 'Invalid form type' }, { status: 400 });
+    return NextResponse.json({ error: "Invalid form type" }, { status: 400 });
   }
 
   try {
     const data = await resend.emails.send({
-      from: 'Chef Irina Restaurant <onboarding@resend.dev>',
+      from: "Chef Irina Restaurant <onboarding@resend.dev>",
       to: process.env.EMAIL_TO as string,
       subject: emailSubject,
       text: emailBody,
-      attachments: attachments
+      attachments: attachments,
     });
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    console.error("Error sending email:", error);
+    return NextResponse.json(
+      { error: "Failed to send email" },
+      { status: 500 }
+    );
   }
 }
