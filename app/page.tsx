@@ -14,6 +14,22 @@ import OurService from "@/components/OurService";
 import { cn } from "@/lib/utils";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: {
+    default: "Chef Irina Restaurant",
+    template: "%s | Chef Irina Restaurant",
+  },
+  description: "Experience the fusion of Slavic, Japanese, Central Asian, and Mediterranean cuisines at Chef Irina Restaurant. Unique taste, quality food.",
+  twitter: {
+    card: "summary_large_image",
+    creator: "@StanleyNouping",
+  },
+  keywords: "Dubai, Chef, Irina, Food, Restaurant, Delivery, Cooking, Meals, Chef Irina, Chef Irina Dubai, Chef Irina Restaurant, Chef Irina Meals, Chef Irina Delivery, Chef Irina Cooking, Arjan, Silicon Oasis, Business Bay, Dubai, UAE,",
+};
+
 
 export default function Home() {
 
