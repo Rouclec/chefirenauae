@@ -15,7 +15,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
-    default: "Chef Irina Restaurant",
+    default: "Chef Irina: A Fusion of Cultures on Your Plate",
     template: "%s | Chef Irina Restaurant",
   },
   description: "Experience the fusion of Slavic, Japanese, Central Asian, and Mediterranean cuisines at Chef Irina Restaurant. Unique taste, quality food.",
