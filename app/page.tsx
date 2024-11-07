@@ -66,7 +66,7 @@ export default function Home() {
             />
           </div>
           <h1 className="heading">
-            Best deals ! Order now and get 10% Off
+          Chef Irina: A Fusion of Cultures on Your Plate
           </h1>
 
           <h2 className="font-gilroyRegular text-text lg:text-2xl">

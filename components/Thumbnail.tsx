@@ -47,7 +47,7 @@ const Thumbnail = () => {
               />
             </div>
             <h1 className="text-center font-kgBlankSketch text-3xl !leading-[120%] text-primary md:text-6xl lg:text-left">
-              Best deals ! Order now and get 10% Off
+            Chef Irina: A Fusion of Cultures on Your Plate
             </h1>
             <h2 className="font-gilroyRegular text-text lg:text-2xl">
               Look not further, the best stop for <br />
