@@ -58,7 +58,7 @@ export default function Home () {
     <main className='select-none bg-background overflow-hidden px-5 lg:px-0 py-10 lg:py-0 relative'>
       <Wrapper
         imagePosition='right'
-        src='/hero.png'
+        src='/main-image.png'
         onMobile={false}
         className='section'
       >
@@ -90,7 +90,7 @@ export default function Home () {
             your stomach.
           </h2>
           <img
-            src='/hero.png'
+            src='/main-image.png'
             alt='hero'
             loading='lazy'
             className={cn('lg:hidden size-[350px]')}
@@ -100,7 +100,7 @@ export default function Home () {
               text='View menu'
               className='hidden lg:flex w-full sm:w-fit'
             />
-            <div className='flex flex-col items-center sm:items-start gap-1'>
+            {/* <div className='flex flex-col items-center sm:items-start gap-1'>
               <img
                 src='/talabat.svg'
                 alt='talabat'
@@ -112,7 +112,7 @@ export default function Home () {
                 <img src='/icons/stars.svg' alt='star' loading='lazy' />
                 <AnimatedReviewStats />
               </div>
-            </div>
+            </div> */}
             <CustomBtn text='View menu' className='flex lg:hidden w-full' />
           </div>
         </div>
